@@ -10,7 +10,7 @@ Contiene: stato, decisioni (con motivazione), cose da fare, punti aperti, cronol
 Copia canonica: `docs/GUIDA.md` dentro il progetto (versionata con git assieme al codice).
 
 ## Stato attuale
-- **Fase:** Step 1 COMPLETATO e VERIFICATO ✅ — repository pubblico, `main` protetto lato server. Prossimo: Step 2 (fondamenta).
+- **Fase:** Step 2 COMPLETATO ✅ — fondamenta scritte. Prossimo: Step 3 (SPEC dei requisiti).
 - **Cartella progetto:** `/Users/matteopetri/Desktop/TestSnake` (repo git attivo, branch corrente: `develop`).
 - **Repository remoto:** `matteopetri2002/test-agentic-snake` ✅ (PUBBLICO dal 2026-10-12, per abilitare la protezione di `main`).
   - https://github.com/matteopetri2002/test-agentic-snake
@@ -72,6 +72,8 @@ Altro (ADR, template, changelog, CI…) **solo quando serve davvero**, non prima
 - **Merge strategy:** squash merge (ogni PR = un commit pulito).
 - **Protezione `main`: TECNICA e attiva ✅ (dal 2026-10-12).** Repo reso **pubblico** (gratis su piano Free) → attivate via API: PR obbligatoria (0 approvazioni: repo singolo), regole valide **anche per il proprietario** (`enforce_admins`), storia lineare (solo squash/rebase, niente merge commit), vietati force-push e cancellazione. Verificata con push diretto di prova → rifiutato (`GH006: Changes must be made through a pull request`).
 - **Release `develop` → `main`:** via PR di release + tag di versione (dettaglio operativo quando ci arriviamo).
+- **Stack tecnico:** vanilla HTML/CSS/JS puro, zero dipendenze, nessun build (apri `index.html` e gioca).
+- **Rendering:** griglia come elementi DOM stilizzati con CSS (niente canvas) — HTML/CSS protagonisti e DOM ispezionabile, più didattico.
 
 ## Da fare
 ### Step 1 — Definire repository e regole di gestione branch
@@ -87,8 +89,13 @@ Altro (ADR, template, changelog, CI…) **solo quando serve davvero**, non prima
 - [x] Eseguire `git init`, creare `develop`, collegare il remote (+ push `main` e `develop`)
 - [x] Protezione tecnica su `main`: **ATTIVA** (repo pubblico → protection via API: PR obbligatoria, enforce_admins, storia lineare, no force-push/deletion; testata con push di prova rifiutato)
 
-### Passi successivi (dalla metodologia)
-- [ ] Step 2 — Fondamenta: `README.md`, `AGENTS.md`, `.gitignore`, struttura cartelle
+### Step 2 — Fondamenta: `README.md`, `AGENTS.md`, `.gitignore`, struttura cartelle
+- [x] Stack: vanilla HTML/CSS/JS (A)
+- [x] Rendering: griglia DOM + CSS (A)
+- [x] `README.md` (cos'è, come si gioca, struttura, flusso)
+- [x] `AGENTS.md` (istruzioni operative: struttura, convenzioni, divieti, DoD)
+- [x] `.gitignore` (fatto in anticipo per `.DS_Store`)
+- [x] Cartelle `css/`, `js/` create (vuote: git non le traccia finché non contengono file; nasceranno con l'implementazione)
 - [ ] Step 3 — Requisiti: `docs/SPEC.md` (cosa fa il gioco, criteri di accettazione, fuori scope)
 - [ ] Step 4 — Progettazione: `docs/ARCHITECTURE.md` (file, responsabilità, separazione logica/adattatori)
 - [ ] Step 5 — Backlog: aprire le Issue GitHub per i task
@@ -97,7 +104,7 @@ Altro (ADR, template, changelog, CI…) **solo quando serve davvero**, non prima
 
 ## Aperto / da decidere
 - Dettaglio operativo release `develop` → `main` (quando ci arriviamo allo Step 7).
-- Stack tecnico e rendering (vanilla vs Vite, canvas vs DOM) — da decidere nello Step 2.
+- Contenuto di SPEC (Step 3): quali feature nella prima versione (base, pausa, record, velocità, mobile)?
 
 ## Cronologia
 - **2026-10-12** — Impostato l'accordo di lavoro; creata questa guida; avviato lo Step 1.
@@ -110,3 +117,4 @@ Altro (ADR, template, changelog, CI…) **solo quando serve davvero**, non prima
 - **2026-10-12** — Deciso: nessun agente specializzato per ora (unico agente + review umana); criterio per crearne uno in futuro.
 - **2026-10-12** — Step 1 COMPLETATO: decise convenzioni branch (`feature/*`…), commit (Conventional Commits), merge (squash). Protezione tecnica `main` impossibile su piano Free+privato (403 su protection e ruleset) → prima regola convenzionale.
 - **2026-10-12** — Scelta opzione B: repo reso PUBBLICO; protezione `main` attivata via API (PR obbligatoria, enforce_admins, storia lineare) e verificata con push diretto rifiutato (GH006).
+- **2026-10-12** — Step 2 COMPLETATO: scelti stack vanilla (A) e rendering DOM+CSS (A); scritti `README.md` e `AGENTS.md`; create cartelle `css/`, `js/`.
