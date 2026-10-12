@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Snake</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="game">
+    <h1>Snake</h1>
+
+    <div class="hud">
+      <span>Punti: <strong id="score">0</strong></span>
+      <span>Record: <strong id="high">0</strong></span>
+    </div>
+
+    <div class="board">
+      <div id="grid"></div>
+
+      <div id="overlay-start" class="overlay">
+        <h2>Snake</h2>
+        <p>Record: <strong id="start-high">0</strong></p>
+        <p>Premi un tasto per iniziare</p>
+      </div>
+
+      <div id="overlay-pause" class="overlay hidden">
+        <h2>Pausa</h2>
+        <p>Premi Spazio per continuare</p>
+      </div>
+
+      <div id="overlay-over" class="overlay hidden">
+        <h2>Game over</h2>
+        <p>Punti: <strong id="final-score">0</strong></p>
+        <p id="new-record" class="hidden">Nuovo record!</p>
+        <button id="btn-restart" type="button">Ricomincia (R)</button>
+      </div>
+    </div>
+
+    <p class="help">Frecce o WASD per muoverti · Spazio per la pausa · R per ricominciare</p>
+  </main>
+
+  <script src="js/game.js"></script>
+  <script src="js/render.js"></script>
+</body>
+</html>
