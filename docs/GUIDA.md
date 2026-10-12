@@ -10,7 +10,7 @@ Contiene: stato, decisioni (con motivazione), cose da fare, punti aperti, cronol
 Copia canonica: `docs/GUIDA.md` dentro il progetto (versionata con git assieme al codice).
 
 ## Stato attuale
-- **Fase:** Step 6 IN CORSO — PR #6 (`feature/game-logic`, chiude #5) aperta verso `develop`, in attesa di review umana.
+- **Fase:** Step 6 IN CORSO — Issue #5 chiusa (`game.js` in `develop`). Prossima: Issue #1 (pagina e rendering).
 - **Cartella progetto:** `/Users/matteopetri/Desktop/TestSnake` (repo git attivo, branch corrente: `develop`).
 - **Repository remoto:** `matteopetri2002/test-agentic-snake` ✅ (PUBBLICO dal 2026-10-12, per abilitare la protezione di `main`).
   - https://github.com/matteopetri2002/test-agentic-snake
@@ -72,6 +72,7 @@ Altro (ADR, template, changelog, CI…) **solo quando serve davvero**, non prima
 - **Merge strategy:** squash merge (ogni PR = un commit pulito).
 - **Protezione `main`: TECNICA e attiva ✅ (dal 2026-10-12).** Repo reso **pubblico** (gratis su piano Free) → attivate via API: PR obbligatoria (0 approvazioni: repo singolo), regole valide **anche per il proprietario** (`enforce_admins`), storia lineare (solo squash/rebase, niente merge commit), vietati force-push e cancellazione. Verificata con push diretto di prova → rifiutato (`GH006: Changes must be made through a pull request`).
 - **Release `develop` → `main`:** via PR di release + tag di versione (dettaglio operativo quando ci arriviamo).
+- **Chiusura Issue:** GitHub chiude le Issue da solo solo con keyword **inglesi** (`Closes #n`, `Fixes #n`) — "chiude" in italiano non funziona. Quindi: o keyword inglese nel body PR, o chiusura manuale con `gh issue close`.
 - **Stack tecnico:** vanilla HTML/CSS/JS puro, zero dipendenze, nessun build (apri `index.html` e gioca).
 - **Rendering:** griglia come elementi DOM stilizzati con CSS (niente canvas) — HTML/CSS protagonisti e DOM ispezionabile, più didattico.
 - **SPEC v1:** griglia 20×20; frecce+WASD; velocità crescente (150 ms −2%/cibo, min 60 ms); +10/cibo; record in localStorage; schermate start/pausa/game-over; inversione a U vietata; muri letali. Fuori scope: mobile/touch.
@@ -115,6 +116,8 @@ Altro (ADR, template, changelog, CI…) **solo quando serve davvero**, non prima
 - [x] #3 Record persistente (`js/storage.js`)
 - [x] #4 Assemblaggio e game loop (`js/main.js`) — per ultima, dipende dalle altre
 - [ ] Step 6 — Loop agentico per ogni Issue (branch → PR → review umana → merge)
+  - [x] #5 logica (`feature/game-logic` → PR #6 → squash merge → branch eliminato)
+  - [ ] #1 pagina e rendering, #2 input, #3 storage, #4 assemblaggio
 - [ ] Step 7 — Release `develop` → `main` (PR + tag); test sulla logica (più avanti)
 
 ## Aperto / da decidere
@@ -137,3 +140,4 @@ Altro (ADR, template, changelog, CI…) **solo quando serve davvero**, non prima
 - **2026-10-12** — Step 5 COMPLETATO: aperte 5 Issue (#1 rendering, #2 input, #3 storage, #4 assemblaggio, #5 logica); si parte dalla #5.
 - **2026-10-12** — Step 6 avviato: branch `feature/game-logic`, implementato `js/game.js`, verificato con suite Node (15/15), aperta PR #6 verso `develop` (chiude #5) — in attesa di review umana.
 - **2026-10-12** — Review #5 in corso: chiarito che `undefined` in console dopo `tick(s)` è normale (`tick` non restituisce nulla, modifica `s`); verifica vera = riga `console.log` successiva.
+- **2026-10-12** — Review #5 OK (`10 4 147`): squash merge PR #6 in `develop`, branch eliminato, Issue #5 chiusa a mano (il "chiude" italiano non auto-chiude: servono keyword inglesi).
