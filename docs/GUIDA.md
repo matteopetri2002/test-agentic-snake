@@ -10,7 +10,7 @@ Contiene: stato, decisioni (con motivazione), cose da fare, punti aperti, cronol
 Copia canonica: `docs/GUIDA.md` dentro il progetto (versionata con git assieme al codice).
 
 ## Stato attuale
-- **Fase:** Step 6 IN CORSO — Issue #3 chiusa (storage in `develop`). Prossima e ultima: Issue #4 (assemblaggio, si gioca!).
+- **Fase:** Step 6 IN CORSO — PR #10 (`feature/main-loop`, chiude #4) aperta verso `develop`, in attesa di review umana (GIOCARE).
 - **Cartella progetto:** `/Users/matteopetri/Desktop/TestSnake` (repo git attivo, branch corrente: `develop`).
 - **Repository remoto:** `matteopetri2002/test-agentic-snake` ✅ (PUBBLICO dal 2026-10-12, per abilitare la protezione di `main`).
   - https://github.com/matteopetri2002/test-agentic-snake
@@ -150,3 +150,4 @@ Altro (ADR, template, changelog, CI…) **solo quando serve davvero**, non prima
 - **2026-10-12** — Review #2 OK (tastiera): squash merge PR #8, branch eliminato, Issue #2 chiusa a mano.
 - **2026-10-12** — Issue #3: branch `feature/storage`, implementato `js/storage.js` (+ script in `index.html`), verificato con suite Node (7/7), aperta PR #9 — in attesa di review umana.
 - **2026-10-12** — Review #3 OK (persistenza): squash merge PR #9, branch eliminato, Issue #3 chiusa a mano.
+- **2026-10-12** — Issue #4: branch `feature/main-loop`, implementato `js/main.js`; la suite (21/21) ha trovato un bug vero sul badge record → fix con flag `isNewRecord`; aperta PR #10 — in attesa di review umana (giocare).
