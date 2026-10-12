@@ -10,11 +10,11 @@ Contiene: stato, decisioni (con motivazione), cose da fare, punti aperti, cronol
 Copia canonica: `docs/GUIDA.md` dentro il progetto (versionata con git assieme al codice).
 
 ## Stato attuale
-- **Fase:** Pianificazione — Step 1: repository e regole di branch.
-- **Cartella progetto:** `/Users/matteopetri/Desktop/TestSnake` (contiene `docs/GUIDA.md`; NON è ancora un repo git).
-- **Repository remoto:** `matteopetri2002/test-agentic-snake` (da creare).
-- **Hosting:** GitHub, repository **privato**.
-- **Bloccante:** autenticazione `gh` CLI da completare.
+- **Fase:** Pianificazione — Step 1 quasi completo; metodologia di sviluppo definita.
+- **Cartella progetto:** `/Users/matteopetri/Desktop/TestSnake` (repo git attivo, branch corrente: `develop`).
+- **Repository remoto:** `matteopetri2002/test-agentic-snake` ✅ creato (privato).
+  - https://github.com/matteopetri2002/test-agentic-snake
+- **Branch remoti:** `main` (seed di bootstrap) e `develop` (allineato a `main`).
 
 ## Procedura standard di avvio progetto (bootstrap)
 Checklist da seguire ogni volta che si inizia un progetto:
@@ -26,42 +26,81 @@ Checklist da seguire ogni volta che si inizia un progetto:
    - protezione del branch `main`
    - su `main` solo commit provenienti da PR
    - (regole da completare: vedi sezione "Da fare" Step 1)
-4. *(da definire con l'utente — passi successivi)*
+4. *(da definire con l'utente — passi successivi: vedi "Metodologia di sviluppo agentico")*
+
+## Metodologia di sviluppo agentico (da zero)
+Come gestire un progetto sviluppato con AI agentica, in parole semplici.
+
+### Perché serve un metodo diverso
+Con l'AI il codice si scrive in fretta, quindi i problemi si spostano su due cose:
+- **Il contesto**: l'AI lavora bene solo se capisce bene il progetto. Servono pochi file chiari che spiegano cosa fare (non prompt brillanti ogni volta).
+- **La verifica**: l'AI a volte sbaglia in modo *plausibile* (codice che sembra giusto ma non lo è). Serve qualcuno/qualcosa che controlli: qui, la **revisione umana testando a mano**.
+
+Regola guida: **scrivere meno codice e più "costituzione" del progetto** (cosa fare, perché, come, quando è "fatto").
+
+### Il ciclo di vita (Fasi 0–7)
+- **Fase 0 — Bootstrap tecnico** ✅ *(fatto: vedi "Procedura standard di avvio progetto")*
+- **Fase 1 — Fondamenta:** `README.md`, `AGENTS.md`, `.gitignore`, struttura cartelle. Niente CI per ora (si è alle prime armi).
+- **Fase 2 — Requisiti:** `docs/SPEC.md` = cosa deve fare il gioco, con **criteri di accettazione** (come si capisce che funziona) e **fuori scope esplicito** (cosa NON deve fare, così l'AI non inventa feature).
+- **Fase 3 — Progettazione:** `docs/ARCHITECTURE.md` (1 pagina: quali file, a cosa serve ognuno). Separare la **logica pura** (regole del gioco, senza schermo) dagli **adattatori** (disegno, tastiera, salvataggio record): la logica pura si potrà testare senza browser.
+- **Fase 4 — Task:** ogni lavoro diventa una **Issue su GitHub**, piccola e con obiettivo chiaro.
+- **Fase 5 — Loop di lavoro (per ogni Issue):** branch `feature/…` da `develop` → l'AI implementa → commit → PR verso `develop` → **revisione umana testando a mano** → merge + cancellazione branch.
+- **Fase 6 — Release:** `develop` → `main` con PR di release + tag di versione.
+- **Fase 7 — Memoria:** le decisioni prese durante il lavoro tornano in `docs/`. Così il progetto si può riprendere in mano in qualsiasi momento.
+
+### Documentazione minima (regola)
+Solo 4 file: `README.md`, `AGENTS.md`, `SPEC.md`, `ARCHITECTURE.md`.
+Altro (ADR, template, changelog, CI…) **solo quando serve davvero**, non prima.
+
+### Definition of Done (quando un task è "fatto")
+1. Fa quello che dice la Issue.
+2. La revisione umana testandolo a mano è OK.
+3. La guida (`docs/GUIDA.md`) è aggiornata se si è deciso qualcosa di nuovo.
 
 ## Decisioni prese
 - **Modello di branching:** `main` (produzione) + `develop` (sviluppo) → stile Git Flow semplificato.
 - **Protezione `main`:** `main` protetto; modifiche solo tramite Pull Request.
-- (dettagli da completare: hosting, nomi branch feature, convenzione commit, flusso PR)
+- **Eccezione bootstrap:** il primo commit (seed del repo vuoto) va diretto su `main`; la protezione si applica da subito dopo.
+- **Documentazione minima:** solo `README.md`, `AGENTS.md`, `SPEC.md`, `ARCHITECTURE.md`; altro solo quando serve.
+- **Revisione:** umana, testando a mano (niente secondo agente reviewer).
+- **Task:** uno = una Issue su GitHub; loop = branch `feature/…` → PR verso `develop` → review umana → merge.
+- **Test:** introdotti più avanti, pochi e solo sulla logica pura del gioco.
+- **CI:** rimandata (si è alle prime armi).
+- (dettagli da completare: nomi branch feature, convenzione commit, merge strategy)
 
 ## Da fare
 ### Step 1 — Definire repository e regole di gestione branch
 - [x] Hosting: GitHub (`matteopetri2002`)
 - [x] Nome e visibilità: `test-agentic-snake`, privato
-- [ ] Autenticare `gh` CLI (bloccante per creare il repo da terminale)
-- [ ] Creare il repo remoto `matteopetri2002/test-agentic-snake` (privato)
+- [x] Autenticare `gh` CLI (login utente completato)
+- [x] Creare il repo remoto `matteopetri2002/test-agentic-snake` (privato)
 - [x] Modello di branching: `main` (produzione) + `develop` (sviluppo)
 - [x] Protezione `main`: solo commit da PR
 - [ ] Definire convenzione per i nomi dei branch (`feature/*`, `fix/*`, ... da decidere)
 - [ ] Definire convenzione per i messaggi di commit
 - [ ] Definire regole di dettaglio per le PR (review, merge strategy, cancellazione branch)
-- [ ] Eseguire `git init`, creare `develop`, collegare il remote
+- [x] Eseguire `git init`, creare `develop`, collegare il remote (+ push `main` e `develop`)
+- [ ] Attivare la branch protection su `main` (via web o API)
 
-### Passi successivi (bozza)
-- [ ] Step 2 — Struttura cartelle e file base
-- [ ] Step 3 — Requisiti / specifica del gioco (SPEC)
-- [ ] Step 4 — Architettura e scelte tecniche
-- [ ] Step 5 — Convenzioni per l'agente (es. `AGENTS.md`)
-- [ ] Step 6 — Piano a task e implementazione
-- [ ] Step 7 — Test e verifica
+### Passi successivi (dalla metodologia)
+- [ ] Step 2 — Fondamenta: `README.md`, `AGENTS.md`, `.gitignore`, struttura cartelle
+- [ ] Step 3 — Requisiti: `docs/SPEC.md` (cosa fa il gioco, criteri di accettazione, fuori scope)
+- [ ] Step 4 — Progettazione: `docs/ARCHITECTURE.md` (file, responsabilità, separazione logica/adattatori)
+- [ ] Step 5 — Backlog: aprire le Issue GitHub per i task
+- [ ] Step 6 — Loop agentico per ogni Issue (branch → PR → review umana → merge)
+- [ ] Step 7 — Release `develop` → `main` (PR + tag); test sulla logica (più avanti)
 
 ## Aperto / da decidere
-- Autenticazione `gh`: login interattivo dell'utente oppure PAT fornito?
 - Convenzione nomi branch feature/fix e messaggi di commit?
-- Far girare il flusso via Pull Request anche se si lavora da soli? (utile didatticamente)
+- Merge strategy per le PR (squash / merge commit)?
 - Come promuovere `develop` → `main` (PR di release, tag di versione)?
+- Branch protection su `main`: via web UI o via API? (su repo personale senza collaboratori, la protezione "require PR" si applica anche al proprietario solo con restrizioni apposite)
 
 ## Cronologia
 - **2026-10-12** — Impostato l'accordo di lavoro; creata questa guida; avviato lo Step 1.
 - **2026-10-12** — Dettata procedura di bootstrap (cartella → apri OpenCode → regole di ingaggio); deciso modello `main`+`develop` con `main` protetto e solo PR.
 - **2026-10-12** — Guida spostata nel progetto come copia canonica: `docs/GUIDA.md` (versionata col repo).
-- **2026-10-12** — Deciso hosting GitHub (`matteopetri2002/test-agentic-snake`, privato); installata `gh` CLI 2.102.0 via Homebrew; in attesa di autenticazione.
+- **2026-10-12** — Deciso hosting GitHub (`matteopetri2002/test-agentic-snake`, privato); installata `gh` CLI 2.102.0 via Homebrew; login utente completato.
+- **2026-10-12** — Creato repo remoto privato; `git init -b main`; commit di bootstrap (`chore: bootstrap...`, `4fe5be2`) pushato su `main`; creato e pushato `develop` (branch di lavoro corrente).
+- **2026-10-12** — Definita la metodologia di sviluppo agentico (doc minima, review umana, Issue GitHub, test/CI più avanti); scritta in guida con ciclo di vita Fasi 0–7 e Definition of Done.
+- **2026-10-12** — Trovato `.DS_Store` nella root (file di sistema macOS, non va in git): rimosso e creato `.gitignore` (anticipa parte dello Step 2).
