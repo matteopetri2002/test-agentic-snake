@@ -10,7 +10,7 @@ Contiene: stato, decisioni (con motivazione), cose da fare, punti aperti, cronol
 Copia canonica: `docs/GUIDA.md` dentro il progetto (versionata con git assieme al codice).
 
 ## Stato attuale
-- **Fase:** Step 4 COMPLETATO ✅ — architettura scritta. Prossimo: Step 5 (Issue GitHub).
+- **Fase:** Step 5 COMPLETATO ✅ — 5 Issue aperte. Prossimo: Step 6 (loop agentico, si parte dalla #5).
 - **Cartella progetto:** `/Users/matteopetri/Desktop/TestSnake` (repo git attivo, branch corrente: `develop`).
 - **Repository remoto:** `matteopetri2002/test-agentic-snake` ✅ (PUBBLICO dal 2026-10-12, per abilitare la protezione di `main`).
   - https://github.com/matteopetri2002/test-agentic-snake
@@ -108,7 +108,12 @@ Altro (ADR, template, changelog, CI…) **solo quando serve davvero**, non prima
 - [x] Stato unico + `tick()` senza eventi; loop con `setTimeout` riprogrammato
 - [x] Rendering: griglia costruita una volta, aggiornate solo le classi
 - [x] Dettagli (coda direzione, no U-turn, `e.repeat`, cibo, coordinate)
-- [ ] Step 5 — Backlog: aprire le Issue GitHub per i task
+### Step 5 — Backlog: aprire le Issue GitHub per i task
+- [x] #5 Logica di gioco (`js/game.js`) — da fare per prima
+- [x] #1 Pagina e rendering (`index.html`, `style.css`, `js/render.js`)
+- [x] #2 Comandi da tastiera (`js/input.js`)
+- [x] #3 Record persistente (`js/storage.js`)
+- [x] #4 Assemblaggio e game loop (`js/main.js`) — per ultima, dipende dalle altre
 - [ ] Step 6 — Loop agentico per ogni Issue (branch → PR → review umana → merge)
 - [ ] Step 7 — Release `develop` → `main` (PR + tag); test sulla logica (più avanti)
 
@@ -129,3 +134,4 @@ Altro (ADR, template, changelog, CI…) **solo quando serve davvero**, non prima
 - **2026-10-12** — Step 2 COMPLETATO: scelti stack vanilla (A) e rendering DOM+CSS (A); scritti `README.md` e `AGENTS.md`; create cartelle `css/`, `js/`.
 - **2026-10-12** — Step 3 COMPLETATO: scritta `docs/SPEC.md` (regole, comandi, stati, record, 8 criteri di accettazione, fuori scope v1).
 - **2026-10-12** — Step 4 COMPLETATO: scritta `docs/ARCHITECTURE.md` (flusso input→game→render, stato unico, loop setTimeout, rendering a classi, dettagli direzione/cibo).
+- **2026-10-12** — Step 5 COMPLETATO: aperte 5 Issue (#1 rendering, #2 input, #3 storage, #4 assemblaggio, #5 logica); si parte dalla #5.
