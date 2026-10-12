@@ -10,7 +10,7 @@ Contiene: stato, decisioni (con motivazione), cose da fare, punti aperti, cronol
 Copia canonica: `docs/GUIDA.md` dentro il progetto (versionata con git assieme al codice).
 
 ## Stato attuale
-- **Fase:** Step 6 IN CORSO — Issue #5 chiusa (`game.js` in `develop`). Prossima: Issue #1 (pagina e rendering).
+- **Fase:** Step 6 IN CORSO — PR #7 (`feature/rendering`, Closes #1) aperta verso `develop`, in attesa di review umana.
 - **Cartella progetto:** `/Users/matteopetri/Desktop/TestSnake` (repo git attivo, branch corrente: `develop`).
 - **Repository remoto:** `matteopetri2002/test-agentic-snake` ✅ (PUBBLICO dal 2026-10-12, per abilitare la protezione di `main`).
   - https://github.com/matteopetri2002/test-agentic-snake
@@ -141,3 +141,4 @@ Altro (ADR, template, changelog, CI…) **solo quando serve davvero**, non prima
 - **2026-10-12** — Step 6 avviato: branch `feature/game-logic`, implementato `js/game.js`, verificato con suite Node (15/15), aperta PR #6 verso `develop` (chiude #5) — in attesa di review umana.
 - **2026-10-12** — Review #5 in corso: chiarito che `undefined` in console dopo `tick(s)` è normale (`tick` non restituisce nulla, modifica `s`); verifica vera = riga `console.log` successiva.
 - **2026-10-12** — Review #5 OK (`10 4 147`): squash merge PR #6 in `develop`, branch eliminato, Issue #5 chiusa a mano (il "chiude" italiano non auto-chiude: servono keyword inglesi).
+- **2026-10-12** — Issue #1: branch `feature/rendering`, implementati `index.html`+`style.css`+`render.js`, verificati (sintassi, id 10/10, suite DOM finto 15/15), aperta PR #7 (con `Closes #1`) — in attesa di review umana.
