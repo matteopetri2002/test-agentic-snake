@@ -1,0 +1,6 @@
+# File di sistema macOS (metadati del Finder: posizione icone, viste cartelle, ...)
+# Non devono entrare nel repository.
+.DS_Store
+
+# Equivalente Windows, per completezza.
+Thumbs.db
