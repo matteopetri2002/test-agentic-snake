@@ -136,3 +136,4 @@ Altro (ADR, template, changelog, CI…) **solo quando serve davvero**, non prima
 - **2026-10-12** — Step 4 COMPLETATO: scritta `docs/ARCHITECTURE.md` (flusso input→game→render, stato unico, loop setTimeout, rendering a classi, dettagli direzione/cibo).
 - **2026-10-12** — Step 5 COMPLETATO: aperte 5 Issue (#1 rendering, #2 input, #3 storage, #4 assemblaggio, #5 logica); si parte dalla #5.
 - **2026-10-12** — Step 6 avviato: branch `feature/game-logic`, implementato `js/game.js`, verificato con suite Node (15/15), aperta PR #6 verso `develop` (chiude #5) — in attesa di review umana.
+- **2026-10-12** — Review #5 in corso: chiarito che `undefined` in console dopo `tick(s)` è normale (`tick` non restituisce nulla, modifica `s`); verifica vera = riga `console.log` successiva.
