@@ -10,7 +10,7 @@ Contiene: stato, decisioni (con motivazione), cose da fare, punti aperti, cronol
 Copia canonica: `docs/GUIDA.md` dentro il progetto (versionata con git assieme al codice).
 
 ## Stato attuale
-- **Fase:** Step 3 COMPLETATO ✅ — SPEC scritta. Prossimo: Step 4 (ARCHITECTURE).
+- **Fase:** Step 4 COMPLETATO ✅ — architettura scritta. Prossimo: Step 5 (Issue GitHub).
 - **Cartella progetto:** `/Users/matteopetri/Desktop/TestSnake` (repo git attivo, branch corrente: `develop`).
 - **Repository remoto:** `matteopetri2002/test-agentic-snake` ✅ (PUBBLICO dal 2026-10-12, per abilitare la protezione di `main`).
   - https://github.com/matteopetri2002/test-agentic-snake
@@ -103,7 +103,11 @@ Altro (ADR, template, changelog, CI…) **solo quando serve davvero**, non prima
 - [x] Stati (start, gioco, pausa, game over) e record persistente
 - [x] Criteri di accettazione manuali (8 punti)
 - [x] Fuori scope v1 (mobile/touch e altro)
-- [ ] Step 4 — Progettazione: `docs/ARCHITECTURE.md` (file, responsabilità, separazione logica/adattatori)
+### Step 4 — Progettazione: `docs/ARCHITECTURE.md` (file, responsabilità, separazione logica/adattatori)
+- [x] Flusso dati a senso unico (input → game → stato → render)
+- [x] Stato unico + `tick()` senza eventi; loop con `setTimeout` riprogrammato
+- [x] Rendering: griglia costruita una volta, aggiornate solo le classi
+- [x] Dettagli (coda direzione, no U-turn, `e.repeat`, cibo, coordinate)
 - [ ] Step 5 — Backlog: aprire le Issue GitHub per i task
 - [ ] Step 6 — Loop agentico per ogni Issue (branch → PR → review umana → merge)
 - [ ] Step 7 — Release `develop` → `main` (PR + tag); test sulla logica (più avanti)
@@ -124,3 +128,4 @@ Altro (ADR, template, changelog, CI…) **solo quando serve davvero**, non prima
 - **2026-10-12** — Scelta opzione B: repo reso PUBBLICO; protezione `main` attivata via API (PR obbligatoria, enforce_admins, storia lineare) e verificata con push diretto rifiutato (GH006).
 - **2026-10-12** — Step 2 COMPLETATO: scelti stack vanilla (A) e rendering DOM+CSS (A); scritti `README.md` e `AGENTS.md`; create cartelle `css/`, `js/`.
 - **2026-10-12** — Step 3 COMPLETATO: scritta `docs/SPEC.md` (regole, comandi, stati, record, 8 criteri di accettazione, fuori scope v1).
+- **2026-10-12** — Step 4 COMPLETATO: scritta `docs/ARCHITECTURE.md` (flusso input→game→render, stato unico, loop setTimeout, rendering a classi, dettagli direzione/cibo).
