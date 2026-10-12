@@ -10,7 +10,7 @@ Contiene: stato, decisioni (con motivazione), cose da fare, punti aperti, cronol
 Copia canonica: `docs/GUIDA.md` dentro il progetto (versionata con git assieme al codice).
 
 ## Stato attuale
-- **Fase:** Step 2 COMPLETATO ✅ — fondamenta scritte. Prossimo: Step 3 (SPEC dei requisiti).
+- **Fase:** Step 3 COMPLETATO ✅ — SPEC scritta. Prossimo: Step 4 (ARCHITECTURE).
 - **Cartella progetto:** `/Users/matteopetri/Desktop/TestSnake` (repo git attivo, branch corrente: `develop`).
 - **Repository remoto:** `matteopetri2002/test-agentic-snake` ✅ (PUBBLICO dal 2026-10-12, per abilitare la protezione di `main`).
   - https://github.com/matteopetri2002/test-agentic-snake
@@ -74,6 +74,7 @@ Altro (ADR, template, changelog, CI…) **solo quando serve davvero**, non prima
 - **Release `develop` → `main`:** via PR di release + tag di versione (dettaglio operativo quando ci arriviamo).
 - **Stack tecnico:** vanilla HTML/CSS/JS puro, zero dipendenze, nessun build (apri `index.html` e gioca).
 - **Rendering:** griglia come elementi DOM stilizzati con CSS (niente canvas) — HTML/CSS protagonisti e DOM ispezionabile, più didattico.
+- **SPEC v1:** griglia 20×20; frecce+WASD; velocità crescente (150 ms −2%/cibo, min 60 ms); +10/cibo; record in localStorage; schermate start/pausa/game-over; inversione a U vietata; muri letali. Fuori scope: mobile/touch.
 
 ## Da fare
 ### Step 1 — Definire repository e regole di gestione branch
@@ -96,7 +97,12 @@ Altro (ADR, template, changelog, CI…) **solo quando serve davvero**, non prima
 - [x] `AGENTS.md` (istruzioni operative: struttura, convenzioni, divieti, DoD)
 - [x] `.gitignore` (fatto in anticipo per `.DS_Store`)
 - [x] Cartelle `css/`, `js/` create (vuote: git non le traccia finché non contengono file; nasceranno con l'implementazione)
-- [ ] Step 3 — Requisiti: `docs/SPEC.md` (cosa fa il gioco, criteri di accettazione, fuori scope)
+### Step 3 — Requisiti: `docs/SPEC.md` (cosa fa il gioco, criteri di accettazione, fuori scope)
+- [x] Regole (griglia, movimento, cibo, collisioni, velocità crescente, punteggio)
+- [x] Comandi (frecce + WASD, Spazio pausa, R restart)
+- [x] Stati (start, gioco, pausa, game over) e record persistente
+- [x] Criteri di accettazione manuali (8 punti)
+- [x] Fuori scope v1 (mobile/touch e altro)
 - [ ] Step 4 — Progettazione: `docs/ARCHITECTURE.md` (file, responsabilità, separazione logica/adattatori)
 - [ ] Step 5 — Backlog: aprire le Issue GitHub per i task
 - [ ] Step 6 — Loop agentico per ogni Issue (branch → PR → review umana → merge)
@@ -104,7 +110,6 @@ Altro (ADR, template, changelog, CI…) **solo quando serve davvero**, non prima
 
 ## Aperto / da decidere
 - Dettaglio operativo release `develop` → `main` (quando ci arriviamo allo Step 7).
-- Contenuto di SPEC (Step 3): quali feature nella prima versione (base, pausa, record, velocità, mobile)?
 
 ## Cronologia
 - **2026-10-12** — Impostato l'accordo di lavoro; creata questa guida; avviato lo Step 1.
@@ -118,3 +123,4 @@ Altro (ADR, template, changelog, CI…) **solo quando serve davvero**, non prima
 - **2026-10-12** — Step 1 COMPLETATO: decise convenzioni branch (`feature/*`…), commit (Conventional Commits), merge (squash). Protezione tecnica `main` impossibile su piano Free+privato (403 su protection e ruleset) → prima regola convenzionale.
 - **2026-10-12** — Scelta opzione B: repo reso PUBBLICO; protezione `main` attivata via API (PR obbligatoria, enforce_admins, storia lineare) e verificata con push diretto rifiutato (GH006).
 - **2026-10-12** — Step 2 COMPLETATO: scelti stack vanilla (A) e rendering DOM+CSS (A); scritti `README.md` e `AGENTS.md`; create cartelle `css/`, `js/`.
+- **2026-10-12** — Step 3 COMPLETATO: scritta `docs/SPEC.md` (regole, comandi, stati, record, 8 criteri di accettazione, fuori scope v1).
