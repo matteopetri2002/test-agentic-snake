@@ -1,9 +1,9 @@
 'use strict';
 
-// Disegna lo stato sul DOM. Non contiene regole di gioco: legge solo `state`.
-// Il record non fa parte dello stato (vive in storage.js): arriva come
-// secondo parametro. Su game over, chiamare render() PRIMA di salvare il
-// record, così il badge "Nuovo record!" si accende correttamente.
+// Disegna lo stato sul DOM. Non contiene regole di gioco: legge solo `state`
+// (e i due parametri). Il record non fa parte dello stato (vive in storage.js).
+// `isNewRecord` dice se accendere il badge "Nuovo record!": lo decide main.js,
+// che sa se il record è stato battuto PRIMA di salvarlo.
 
 let cells = []; // le 400 caselle, create una sola volta da buildGrid()
 
@@ -34,8 +34,8 @@ function show(id, visible) {
   }
 }
 
-// Ridisegna tutto a partire da `state` (+ record per HUD e badge).
-function render(state, highScore) {
+// Ridisegna tutto a partire da `state` (+ record per l'HUD, + flag per il badge).
+function render(state, highScore, isNewRecord = false) {
   if (cells.length === 0) {
     buildGrid();
   }
@@ -68,6 +68,6 @@ function render(state, highScore) {
   show('overlay-over', over);
   if (over) {
     setText('final-score', state.score);
-    show('new-record', state.score > highScore && state.score > 0);
+    show('new-record', isNewRecord);
   }
 }
