@@ -10,7 +10,7 @@ Contiene: stato, decisioni (con motivazione), cose da fare, punti aperti, cronol
 Copia canonica: `docs/GUIDA.md` dentro il progetto (versionata con git assieme al codice).
 
 ## Stato attuale
-- **Fase:** Step 5 COMPLETATO ✅ — 5 Issue aperte. Prossimo: Step 6 (loop agentico, si parte dalla #5).
+- **Fase:** Step 6 IN CORSO — PR #6 (`feature/game-logic`, chiude #5) aperta verso `develop`, in attesa di review umana.
 - **Cartella progetto:** `/Users/matteopetri/Desktop/TestSnake` (repo git attivo, branch corrente: `develop`).
 - **Repository remoto:** `matteopetri2002/test-agentic-snake` ✅ (PUBBLICO dal 2026-10-12, per abilitare la protezione di `main`).
   - https://github.com/matteopetri2002/test-agentic-snake
@@ -135,3 +135,4 @@ Altro (ADR, template, changelog, CI…) **solo quando serve davvero**, non prima
 - **2026-10-12** — Step 3 COMPLETATO: scritta `docs/SPEC.md` (regole, comandi, stati, record, 8 criteri di accettazione, fuori scope v1).
 - **2026-10-12** — Step 4 COMPLETATO: scritta `docs/ARCHITECTURE.md` (flusso input→game→render, stato unico, loop setTimeout, rendering a classi, dettagli direzione/cibo).
 - **2026-10-12** — Step 5 COMPLETATO: aperte 5 Issue (#1 rendering, #2 input, #3 storage, #4 assemblaggio, #5 logica); si parte dalla #5.
+- **2026-10-12** — Step 6 avviato: branch `feature/game-logic`, implementato `js/game.js`, verificato con suite Node (15/15), aperta PR #6 verso `develop` (chiude #5) — in attesa di review umana.
