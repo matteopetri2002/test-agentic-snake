@@ -10,7 +10,7 @@ Contiene: stato, decisioni (con motivazione), cose da fare, punti aperti, cronol
 Copia canonica: `docs/GUIDA.md` dentro il progetto (versionata con git assieme al codice).
 
 ## Stato attuale
-- **Fase:** Step 6 IN CORSO — PR #9 (`feature/storage`, chiude #3) aperta verso `develop`, in attesa di review umana.
+- **Fase:** Step 6 IN CORSO — Issue #3 chiusa (storage in `develop`). Prossima e ultima: Issue #4 (assemblaggio, si gioca!).
 - **Cartella progetto:** `/Users/matteopetri/Desktop/TestSnake` (repo git attivo, branch corrente: `develop`).
 - **Repository remoto:** `matteopetri2002/test-agentic-snake` ✅ (PUBBLICO dal 2026-10-12, per abilitare la protezione di `main`).
   - https://github.com/matteopetri2002/test-agentic-snake
@@ -119,7 +119,8 @@ Altro (ADR, template, changelog, CI…) **solo quando serve davvero**, non prima
   - [x] #5 logica (`feature/game-logic` → PR #6 → squash merge → branch eliminato)
   - [x] #1 rendering (`feature/rendering` → PR #7 → squash merge → branch eliminato)
   - [x] #2 input (`feature/input` → PR #8 → squash merge → branch eliminato)
-  - [ ] #3 storage, #4 assemblaggio
+  - [x] #3 storage (`feature/storage` → PR #9 → squash merge → branch eliminato)
+  - [ ] #4 assemblaggio
 - [ ] Step 7 — Release `develop` → `main` (PR + tag); test sulla logica (più avanti)
 
 ## Aperto / da decidere
@@ -148,3 +149,4 @@ Altro (ADR, template, changelog, CI…) **solo quando serve davvero**, non prima
 - **2026-10-12** — Issue #2: branch `feature/input`, implementato `js/input.js` (+ script in `index.html`), verificato con suite Node (6/6), aperta PR #8 — in attesa di review umana. Micro-decisione: niente `onStart` (il routing per stato vive in `main.js`).
 - **2026-10-12** — Review #2 OK (tastiera): squash merge PR #8, branch eliminato, Issue #2 chiusa a mano.
 - **2026-10-12** — Issue #3: branch `feature/storage`, implementato `js/storage.js` (+ script in `index.html`), verificato con suite Node (7/7), aperta PR #9 — in attesa di review umana.
+- **2026-10-12** — Review #3 OK (persistenza): squash merge PR #9, branch eliminato, Issue #3 chiusa a mano.
