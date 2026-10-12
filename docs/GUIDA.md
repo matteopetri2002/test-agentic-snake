@@ -10,7 +10,7 @@ Contiene: stato, decisioni (con motivazione), cose da fare, punti aperti, cronol
 Copia canonica: `docs/GUIDA.md` dentro il progetto (versionata con git assieme al codice).
 
 ## Stato attuale
-- **Fase:** Step 6 IN CORSO — PR #10 (`feature/main-loop`, chiude #4) aperta verso `develop`, in attesa di review umana (GIOCARE).
+- **Fase:** Step 6 COMPLETATO ✅ — tutte le 5 Issue chiuse, gioco funzionante su `develop`. In corso: Step 7 (release v1.0.0 su `main`).
 - **Cartella progetto:** `/Users/matteopetri/Desktop/TestSnake` (repo git attivo, branch corrente: `develop`).
 - **Repository remoto:** `matteopetri2002/test-agentic-snake` ✅ (PUBBLICO dal 2026-10-12, per abilitare la protezione di `main`).
   - https://github.com/matteopetri2002/test-agentic-snake
@@ -120,8 +120,10 @@ Altro (ADR, template, changelog, CI…) **solo quando serve davvero**, non prima
   - [x] #1 rendering (`feature/rendering` → PR #7 → squash merge → branch eliminato)
   - [x] #2 input (`feature/input` → PR #8 → squash merge → branch eliminato)
   - [x] #3 storage (`feature/storage` → PR #9 → squash merge → branch eliminato)
-  - [ ] #4 assemblaggio
+  - [x] #4 assemblaggio (`feature/main-loop` → PR #10 → squash merge → branch eliminato)
 - [ ] Step 7 — Release `develop` → `main` (PR + tag); test sulla logica (più avanti)
+  - [x] Gioco completo e giocabile su `develop` (5/5 Issue chiuse)
+  - [ ] PR di release verso `main` + tag `v1.0.0`
 
 ## Aperto / da decidere
 - Dettaglio operativo release `develop` → `main` (quando ci arriviamo allo Step 7).
@@ -151,3 +153,4 @@ Altro (ADR, template, changelog, CI…) **solo quando serve davvero**, non prima
 - **2026-10-12** — Issue #3: branch `feature/storage`, implementato `js/storage.js` (+ script in `index.html`), verificato con suite Node (7/7), aperta PR #9 — in attesa di review umana.
 - **2026-10-12** — Review #3 OK (persistenza): squash merge PR #9, branch eliminato, Issue #3 chiusa a mano.
 - **2026-10-12** — Issue #4: branch `feature/main-loop`, implementato `js/main.js`; la suite (21/21) ha trovato un bug vero sul badge record → fix con flag `isNewRecord`; aperta PR #10 — in attesa di review umana (giocare).
+- **2026-10-12** — Review #4 OK (giocato, 8 criteri SPEC): squash merge PR #10, branch eliminato, Issue #4 chiusa a mano. Step 6 COMPLETATO (5/5 Issue). Avviato Step 7 (release v1.0.0).
