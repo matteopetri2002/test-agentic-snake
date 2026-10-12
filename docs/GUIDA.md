@@ -10,9 +10,9 @@ Contiene: stato, decisioni (con motivazione), cose da fare, punti aperti, cronol
 Copia canonica: `docs/GUIDA.md` dentro il progetto (versionata con git assieme al codice).
 
 ## Stato attuale
-- **Fase:** Step 1 COMPLETATO ✅ — repository creato, regole di branch definite. Prossimo: Step 2 (fondamenta).
+- **Fase:** Step 1 COMPLETATO e VERIFICATO ✅ — repository pubblico, `main` protetto lato server. Prossimo: Step 2 (fondamenta).
 - **Cartella progetto:** `/Users/matteopetri/Desktop/TestSnake` (repo git attivo, branch corrente: `develop`).
-- **Repository remoto:** `matteopetri2002/test-agentic-snake` ✅ creato (privato).
+- **Repository remoto:** `matteopetri2002/test-agentic-snake` ✅ (PUBBLICO dal 2026-10-12, per abilitare la protezione di `main`).
   - https://github.com/matteopetri2002/test-agentic-snake
 - **Branch remoti:** `main` (seed di bootstrap) e `develop` (allineato a `main`).
 
@@ -70,13 +70,13 @@ Altro (ADR, template, changelog, CI…) **solo quando serve davvero**, non prima
 - **Nomi branch:** `feature/…`, `fix/…`, `docs/…`, `chore/…` (kebab-case, es. `feature/game-loop`).
 - **Messaggi di commit:** Conventional Commits (`feat:`, `fix:`, `docs:`, `chore:`, `refactor:`, `test:`).
 - **Merge strategy:** squash merge (ogni PR = un commit pulito).
-- **Protezione `main`: CONVENZIONALE, non tecnica.** Su repo privati con piano Free, GitHub non permette enforcement server-side (né branch protection né ruleset: entrambe richiedono Pro — verificato via API, errore 403). Quindi la regola "su `main` solo via PR" vale per disciplina + review, ed è documentata qui.
+- **Protezione `main`: TECNICA e attiva ✅ (dal 2026-10-12).** Repo reso **pubblico** (gratis su piano Free) → attivate via API: PR obbligatoria (0 approvazioni: repo singolo), regole valide **anche per il proprietario** (`enforce_admins`), storia lineare (solo squash/rebase, niente merge commit), vietati force-push e cancellazione. Verificata con push diretto di prova → rifiutato (`GH006: Changes must be made through a pull request`).
 - **Release `develop` → `main`:** via PR di release + tag di versione (dettaglio operativo quando ci arriviamo).
 
 ## Da fare
 ### Step 1 — Definire repository e regole di gestione branch
 - [x] Hosting: GitHub (`matteopetri2002`)
-- [x] Nome e visibilità: `test-agentic-snake`, privato
+- [x] Nome e visibilità: `test-agentic-snake` → reso **pubblico** (necessario per la protezione di `main` su piano Free)
 - [x] Autenticare `gh` CLI (login utente completato)
 - [x] Creare il repo remoto `matteopetri2002/test-agentic-snake` (privato)
 - [x] Modello di branching: `main` (produzione) + `develop` (sviluppo)
@@ -85,7 +85,7 @@ Altro (ADR, template, changelog, CI…) **solo quando serve davvero**, non prima
 - [x] Convenzione messaggi di commit: Conventional Commits
 - [x] Merge strategy: squash merge
 - [x] Eseguire `git init`, creare `develop`, collegare il remote (+ push `main` e `develop`)
-- [x] Protezione tecnica su `main`: valutata e **scartata** (richiede GitHub Pro su repo privati) → regola convenzionale documentata in guida
+- [x] Protezione tecnica su `main`: **ATTIVA** (repo pubblico → protection via API: PR obbligatoria, enforce_admins, storia lineare, no force-push/deletion; testata con push di prova rifiutato)
 
 ### Passi successivi (dalla metodologia)
 - [ ] Step 2 — Fondamenta: `README.md`, `AGENTS.md`, `.gitignore`, struttura cartelle
@@ -108,4 +108,5 @@ Altro (ADR, template, changelog, CI…) **solo quando serve davvero**, non prima
 - **2026-10-12** — Definita la metodologia di sviluppo agentico (doc minima, review umana, Issue GitHub, test/CI più avanti); scritta in guida con ciclo di vita Fasi 0–7 e Definition of Done.
 - **2026-10-12** — Trovato `.DS_Store` nella root (file di sistema macOS, non va in git): rimosso e creato `.gitignore` (anticipa parte dello Step 2).
 - **2026-10-12** — Deciso: nessun agente specializzato per ora (unico agente + review umana); criterio per crearne uno in futuro.
-- **2026-10-12** — Step 1 COMPLETATO: decise convenzioni branch (`feature/*`…), commit (Conventional Commits), merge (squash). Protezione tecnica `main` impossibile su piano Free+privato (403 su protection e ruleset) → regola convenzionale documentata.
+- **2026-10-12** — Step 1 COMPLETATO: decise convenzioni branch (`feature/*`…), commit (Conventional Commits), merge (squash). Protezione tecnica `main` impossibile su piano Free+privato (403 su protection e ruleset) → prima regola convenzionale.
+- **2026-10-12** — Scelta opzione B: repo reso PUBBLICO; protezione `main` attivata via API (PR obbligatoria, enforce_admins, storia lineare) e verificata con push diretto rifiutato (GH006).
