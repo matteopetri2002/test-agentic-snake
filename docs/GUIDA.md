@@ -10,7 +10,7 @@ Contiene: stato, decisioni (con motivazione), cose da fare, punti aperti, cronol
 Copia canonica: `docs/GUIDA.md` dentro il progetto (versionata con git assieme al codice).
 
 ## Stato attuale
-- **Fase:** Pianificazione — Step 1 quasi completo; metodologia di sviluppo definita.
+- **Fase:** Step 1 COMPLETATO ✅ — repository creato, regole di branch definite. Prossimo: Step 2 (fondamenta).
 - **Cartella progetto:** `/Users/matteopetri/Desktop/TestSnake` (repo git attivo, branch corrente: `develop`).
 - **Repository remoto:** `matteopetri2002/test-agentic-snake` ✅ creato (privato).
   - https://github.com/matteopetri2002/test-agentic-snake
@@ -66,7 +66,12 @@ Altro (ADR, template, changelog, CI…) **solo quando serve davvero**, non prima
 - **Task:** uno = una Issue su GitHub; loop = branch `feature/…` → PR verso `develop` → review umana → merge.
 - **Test:** introdotti più avanti, pochi e solo sulla logica pura del gioco.
 - **CI:** rimandata (si è alle prime armi).
-- (dettagli da completare: nomi branch feature, convenzione commit, merge strategy)
+- **Agenti specializzati:** nessuno per ora — un unico agente + revisione umana. Se ne crea uno solo quando un compito diventa ripetitivo, da isolare, o troppo grande per un'unica conversazione (mai per ottimizzazione prematura).
+- **Nomi branch:** `feature/…`, `fix/…`, `docs/…`, `chore/…` (kebab-case, es. `feature/game-loop`).
+- **Messaggi di commit:** Conventional Commits (`feat:`, `fix:`, `docs:`, `chore:`, `refactor:`, `test:`).
+- **Merge strategy:** squash merge (ogni PR = un commit pulito).
+- **Protezione `main`: CONVENZIONALE, non tecnica.** Su repo privati con piano Free, GitHub non permette enforcement server-side (né branch protection né ruleset: entrambe richiedono Pro — verificato via API, errore 403). Quindi la regola "su `main` solo via PR" vale per disciplina + review, ed è documentata qui.
+- **Release `develop` → `main`:** via PR di release + tag di versione (dettaglio operativo quando ci arriviamo).
 
 ## Da fare
 ### Step 1 — Definire repository e regole di gestione branch
@@ -76,11 +81,11 @@ Altro (ADR, template, changelog, CI…) **solo quando serve davvero**, non prima
 - [x] Creare il repo remoto `matteopetri2002/test-agentic-snake` (privato)
 - [x] Modello di branching: `main` (produzione) + `develop` (sviluppo)
 - [x] Protezione `main`: solo commit da PR
-- [ ] Definire convenzione per i nomi dei branch (`feature/*`, `fix/*`, ... da decidere)
-- [ ] Definire convenzione per i messaggi di commit
-- [ ] Definire regole di dettaglio per le PR (review, merge strategy, cancellazione branch)
+- [x] Convenzione nomi branch: `feature/*`, `fix/*`, `docs/*`, `chore/*` (kebab-case)
+- [x] Convenzione messaggi di commit: Conventional Commits
+- [x] Merge strategy: squash merge
 - [x] Eseguire `git init`, creare `develop`, collegare il remote (+ push `main` e `develop`)
-- [ ] Attivare la branch protection su `main` (via web o API)
+- [x] Protezione tecnica su `main`: valutata e **scartata** (richiede GitHub Pro su repo privati) → regola convenzionale documentata in guida
 
 ### Passi successivi (dalla metodologia)
 - [ ] Step 2 — Fondamenta: `README.md`, `AGENTS.md`, `.gitignore`, struttura cartelle
@@ -91,10 +96,8 @@ Altro (ADR, template, changelog, CI…) **solo quando serve davvero**, non prima
 - [ ] Step 7 — Release `develop` → `main` (PR + tag); test sulla logica (più avanti)
 
 ## Aperto / da decidere
-- Convenzione nomi branch feature/fix e messaggi di commit?
-- Merge strategy per le PR (squash / merge commit)?
-- Come promuovere `develop` → `main` (PR di release, tag di versione)?
-- Branch protection su `main`: via web UI o via API? (su repo personale senza collaboratori, la protezione "require PR" si applica anche al proprietario solo con restrizioni apposite)
+- Dettaglio operativo release `develop` → `main` (quando ci arriviamo allo Step 7).
+- Stack tecnico e rendering (vanilla vs Vite, canvas vs DOM) — da decidere nello Step 2.
 
 ## Cronologia
 - **2026-10-12** — Impostato l'accordo di lavoro; creata questa guida; avviato lo Step 1.
@@ -104,3 +107,5 @@ Altro (ADR, template, changelog, CI…) **solo quando serve davvero**, non prima
 - **2026-10-12** — Creato repo remoto privato; `git init -b main`; commit di bootstrap (`chore: bootstrap...`, `4fe5be2`) pushato su `main`; creato e pushato `develop` (branch di lavoro corrente).
 - **2026-10-12** — Definita la metodologia di sviluppo agentico (doc minima, review umana, Issue GitHub, test/CI più avanti); scritta in guida con ciclo di vita Fasi 0–7 e Definition of Done.
 - **2026-10-12** — Trovato `.DS_Store` nella root (file di sistema macOS, non va in git): rimosso e creato `.gitignore` (anticipa parte dello Step 2).
+- **2026-10-12** — Deciso: nessun agente specializzato per ora (unico agente + review umana); criterio per crearne uno in futuro.
+- **2026-10-12** — Step 1 COMPLETATO: decise convenzioni branch (`feature/*`…), commit (Conventional Commits), merge (squash). Protezione tecnica `main` impossibile su piano Free+privato (403 su protection e ruleset) → regola convenzionale documentata.
