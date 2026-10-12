@@ -10,7 +10,7 @@ Contiene: stato, decisioni (con motivazione), cose da fare, punti aperti, cronol
 Copia canonica: `docs/GUIDA.md` dentro il progetto (versionata con git assieme al codice).
 
 ## Stato attuale
-- **Fase:** Step 6 IN CORSO — Issue #1 chiusa (rendering in `develop`). Prossima: Issue #2 (input).
+- **Fase:** Step 6 IN CORSO — PR #8 (`feature/input`, chiude #2) aperta verso `develop`, in attesa di review umana.
 - **Cartella progetto:** `/Users/matteopetri/Desktop/TestSnake` (repo git attivo, branch corrente: `develop`).
 - **Repository remoto:** `matteopetri2002/test-agentic-snake` ✅ (PUBBLICO dal 2026-10-12, per abilitare la protezione di `main`).
   - https://github.com/matteopetri2002/test-agentic-snake
@@ -144,3 +144,4 @@ Altro (ADR, template, changelog, CI…) **solo quando serve davvero**, non prima
 - **2026-10-12** — Review #5 OK (`10 4 147`): squash merge PR #6 in `develop`, branch eliminato, Issue #5 chiusa a mano (il "chiude" italiano non auto-chiude: servono keyword inglesi).
 - **2026-10-12** — Issue #1: branch `feature/rendering`, implementati `index.html`+`style.css`+`render.js`, verificati (sintassi, id 10/10, suite DOM finto 15/15), aperta PR #7 (con `Closes #1`) — in attesa di review umana.
 - **2026-10-12** — Review #1 OK (browser): squash merge PR #7, branch eliminato, Issue #1 chiusa a mano — `Closes` non auto-chiude perché mergiamo in `develop`, non nel default branch.
+- **2026-10-12** — Issue #2: branch `feature/input`, implementato `js/input.js` (+ script in `index.html`), verificato con suite Node (6/6), aperta PR #8 — in attesa di review umana. Micro-decisione: niente `onStart` (il routing per stato vive in `main.js`).
